@@ -4,7 +4,7 @@ pipeline {
         stage('Clonage') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/Assia-Daanouni/CI_Project.git'
+                    url: 'https://github.com/Assia-Daanouni/CI_Project.git'
             }
         }
         stage('Vérification Python') {
@@ -16,6 +16,11 @@ pipeline {
         stage('Installation des dépendances') {
             steps {
                 bat 'python -m pip install -r requirements.txt'
+            }
+        }
+        stage('Analyse qualité code - Pylint') {
+            steps {
+                bat 'python -m pylint calculator.py'
             }
         }
         stage('Tests unitaires') {
