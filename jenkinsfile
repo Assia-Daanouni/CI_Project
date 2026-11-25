@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Analyse qualité code - Pylint') {
             steps {
-                bat '"%PYTHON%" -m pylint calculator.py --fail-under=8'
+                bat 'python -m pylint calculator.py'
             }
         }
         stage('Tests unitaires') {
